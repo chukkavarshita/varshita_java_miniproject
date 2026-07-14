@@ -96,7 +96,7 @@ public class Main
             else
             {
                 System.out.println("Wrong Answer!");
-                System.out.println("Answer: "+easyAnswers[i]);
+                System.out.println("Answer: "+answers[i]);
             }
             }
             else

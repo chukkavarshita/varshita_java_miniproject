@@ -1,0 +1,124 @@
+import java.util.Scanner;
+public class Main
+{
+    public static void main(String args[])
+    {
+        Scanner sc=new Scanner(System.in);
+        String[] easyQuestions=
+        {
+            "A.What is the capital of India?\n1.New Delhi\n2.Tamil Nadu\n3.Assam\n4.Goa",
+            "B.Who is the PM of India?\n1.Donald Trumph\n2.Narendra Modi\n3.Xi-Xinping\n4.Putin",
+            "C.Who is the President of India?\n1.Donald Trumph\n2.Suvendhu Adhikari\n3.Yogi Adityanath\n4.Draupadi Murmu",
+            "D.What is the National Bird of India?\n1.Crow\n2.Swan\n3.Peacock\n4.Ostrich",
+            "E.What is the National Animal of India?\n1.Tiger\n2.Mangoose\n3.Lion\n4.Cheetah"
+        };
+        int[] easyAnswers={1,2,4,3,1};
+        String[] mediumQuestions = {
+                "1. Who invented Java?\n1. James Gosling\n2. Dennis Ritchie\n3. Guido van Rossum\n4. Bjarne Stroustrup",
+                "2. Which is the largest ocean?\n1. Arctic\n2. Indian\n3. Pacific\n4. Atlantic",
+                "3. What is the currency of Japan?\n1. Dollar\n2. Yen\n3. Won\n4. Rupee",
+                "4. Which gas do plants absorb?\n1. Oxygen\n2. Hydrogen\n3. Carbon Dioxide\n4. Nitrogen",
+                "5. Which is the largest planet?\n1. Mars\n2. Jupiter\n3. Earth\n4. Saturn"
+        };
+
+        int[] mediumAnswers = {1, 3, 2, 3, 2};
+        String[] hardQuestions = {
+                "1. Which keyword is used to inherit a class in Java?\n1. implements\n2. extends\n3. super\n4. this",
+                "2. What is the time complexity of Binary Search?\n1. O(n)\n2. O(log n)\n3. O(n log n)\n4. O(1)",
+                "3. Who is known as the Father of the Indian Constitution?\n1. Mahatma Gandhi\n2. B. R. Ambedkar\n3. Jawaharlal Nehru\n4. Sardar Patel",
+                "4. Which is the smallest prime number?\n1. 0\n2. 1\n3. 2\n4. 3",
+                "5. Which data structure follows LIFO?\n1. Queue\n2. Linked List\n3. Stack\n4. Tree"
+        };
+        int[] hardAnswers = {2, 2, 2, 3, 3};
+
+        int count=0;
+        System.out.println("------WELCOME TO QUIZ GAME------\n");
+        System.out.println("INSTRUCTIONS");
+        System.out.println("1.Enter options from 1 to 4 only.\n2.If you enter any invalid input,the answer will be taken as wrong and score will be calculated accordingly.\n");
+        System.out.println("Select Difficulty Level");
+        System.out.println("1. Easy");
+        System.out.println("2. Medium");
+        System.out.println("3. Hard");
+        System.out.print("Enter your choice: ");
+        if (!sc.hasNextInt())
+        {
+        System.out.println("Invalid Input! Quiz Terminated.");
+        sc.close();
+        return;
+       }
+        int level = sc.nextInt();
+        String[] questions;
+        int[] answers;
+
+        switch (level) {
+            case 1:
+                questions = easyQuestions;
+                answers = easyAnswers;
+                System.out.println("\n------ EASY LEVEL ------");
+                break;
+
+            case 2:
+                questions = mediumQuestions;
+                answers = mediumAnswers;
+                System.out.println("\n------ MEDIUM LEVEL ------");
+                break;
+
+            case 3:
+                questions = hardQuestions;
+                answers = hardAnswers;
+                System.out.println("\n------ HARD LEVEL ------");
+                break;
+
+            default:
+                System.out.println("Invalid Level!");
+                sc.close();
+                return;
+        }
+
+        for(int i=0;i<questions.length;i++)
+        {
+            System.out.println(questions[i]);
+            System.out.println("Enter your Answer: ");
+            if (!sc.hasNextInt())
+            {
+             System.out.println("Invalid Input in Answer! Quiz Terminated.");
+             sc.close();
+             return;
+           }
+            int userAnswer=sc.nextInt();
+            if(userAnswer>=1 && userAnswer<=4)
+            {
+            if(userAnswer==answers[i])
+            {
+                System.out.println("Correct Answer!");
+                count++;
+            }
+            else
+            {
+                System.out.println("Wrong Answer!");
+                System.out.println("Answer: "+easyAnswers[i]);
+            }
+            }
+            else
+            {
+                System.out.println("Invalid Option choosen!");
+            }
+            
+        }
+        System.out.println("\n---RESULT---\n");
+        System.out.println("Your Score: "+count+" out of "+questions.length);
+        if(count==questions.length)
+        {
+            System.out.println("Excellent!");
+        }
+        else if(count>=3 && count<questions.length)
+        {
+            System.out.println("Good!");
+        }
+        else
+        {
+            System.out.println("Better Luck Next Time!");
+        }
+        sc.close();
+    }
+}
